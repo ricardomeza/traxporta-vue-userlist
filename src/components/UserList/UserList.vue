@@ -55,7 +55,7 @@
                 <img
                   :src="user.avatarUrl"
                   :alt="user.name"
-                  class="h-10 w-10 rounded-lg border-gray-300 border mr-5 ml-5 m-auto min-w-fit"
+                  class="h-10 w-10 rounded-lg border-gray-300 border mr-5 ml-5 m-auto"
                 />
               </td>
               <td class="pr-5">{{ user.name }}</td>
