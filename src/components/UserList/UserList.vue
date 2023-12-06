@@ -20,7 +20,7 @@
             id="iconClearSearch"
             v-if="searchQuery"
           >
-            <img :src="IconClose" alt="Clear text" />
+            <img :src="IconClose" alt="Clear text." />
           </div>
         </div>
       </div>
