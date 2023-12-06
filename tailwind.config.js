@@ -5,7 +5,8 @@ export default {
     extend: {
       colors: {
         'traxporta-green': '#e8f076',
-        'traxporta-blue': '#5ab5e4'
+        'traxporta-blue': '#5ab5e4',
+        'traxporta-blue-light': '#eff6f9'
       }
     }
   },
