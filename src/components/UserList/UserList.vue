@@ -27,7 +27,7 @@
 
       <!-- Table -->
       <section class="w-full flex flex-col items-center">
-        <div v-if="!dataCombined.length && !filteredUsersHasData" class="loader mt-10 mb-10"></div>
+        <Spinner v-if="!dataCombined.length && !filteredUsersHasData" class="mt-10 mb-10" />
         <table
           v-if="dataCombined.length && filteredUsersHasData"
           class="table-auto w-full"
@@ -44,7 +44,7 @@
             <tr
               v-for="user in filteredUsers"
               :key="user.id"
-              class="border-t h-20 text-xs font-semibold"
+              class="border-t h-20 text-xs font-semibold hover:bg-traxporta-blue-light cursor-pointer"
             >
               <td>
                 <img
@@ -66,11 +66,15 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue'
 import { getRandomNumber, searchTextInField } from '@utils/misc'
-import type { UserList } from './UserList'
 import IconClose from '@assets/icon-close.svg'
+import Spinner from '@components/Spinner/Spinner.vue'
+import type { UserList } from './UserList'
 
 export default defineComponent({
   name: 'UserList',
+  components: {
+    Spinner
+  },
   setup() {
     const dataCombined = ref<UserList[]>([])
     const searchQuery = ref('')
