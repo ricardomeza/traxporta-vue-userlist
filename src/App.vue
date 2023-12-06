@@ -1,24 +1,12 @@
-<script setup lang="ts"></script>
-
 <template>
-  <!-- Header -->
-  <header
-    class="bg-gradient-to-r from-traxporta-green to-traxporta-blue w-full min-h-[5px]"
-  ></header>
-
-  <!-- Main Content -->
-  <div class="flex flex-grow min-h-screen">
-    <!-- Sidebar -->
-    <Sidebar />
-
-    <!-- Content -->
-    <main class="flex-1 bg-gray-100 overflow-y-auto items-center justify-center">
+  <AppTemplate>
+    <template #content>
       <UserList />
-    </main>
-  </div>
+    </template>
+  </AppTemplate>
 </template>
 
 <script setup lang="ts">
-import Sidebar from '@components/Sidebar/Sidebar.vue'
+import AppTemplate from '@components/AppTemplate/AppTemplate.vue'
 import UserList from '@components/UserList/UserList.vue'
 </script>
