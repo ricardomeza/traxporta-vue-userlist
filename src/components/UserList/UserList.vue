@@ -27,9 +27,9 @@
       <table class="table-auto w-full mt-6">
         <thead>
           <tr class="text-left text-xs">
-            <th class="pb-3 font-thin min-w-min"></th>
-            <th class="pb-3 font-thin min-w-min">Name</th>
-            <th class="pb-3 font-thin min-w-min">E-mail</th>
+            <th v-for="name in tableUsersHeaders" :key="name" class="pb-3 font-thin min-w-min">
+              {{ name }}
+            </th>
           </tr>
         </thead>
         <tbody>
