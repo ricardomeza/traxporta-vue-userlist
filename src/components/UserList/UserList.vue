@@ -35,7 +35,12 @@
         >
           <thead>
             <tr class="text-left text-xs">
-              <th v-for="name in tableUsersHeaders" :key="name" class="pb-3 font-thin min-w-min">
+              <th
+                v-for="name in tableUsersHeaders"
+                :key="name"
+                class="pb-3 font-thin"
+                :class="[name ? 'w-auto' : 'w-[80px]']"
+              >
                 {{ name }}
               </th>
             </tr>
