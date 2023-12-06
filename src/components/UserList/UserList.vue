@@ -6,12 +6,21 @@
         <h2 class="font-bold mb-3 text-md">Users</h2>
 
         <!-- Input -->
-        <input
-          class="border p-3 text-xs rounded-3xl pl-4 w-80"
-          placeholder="Search"
-          type="text"
-          v-model="searchQuery"
-        />
+        <div class="relative">
+          <input
+            class="border p-3 text-xs rounded-3xl pl-4 w-80"
+            placeholder="Search"
+            type="text"
+            v-model="searchQuery"
+          />
+          <div
+            v-if="searchQuery"
+            @click="clearSearchQuery"
+            class="absolute right-2 top-2 cursor-pointer"
+          >
+            <img :src="IconClose" alt="Clear text" />
+          </div>
+        </div>
       </div>
 
       <!-- Table -->
@@ -49,6 +58,7 @@
 import { defineComponent, ref, computed } from 'vue'
 import { getRandomNumber, searchTextInField } from '@utils/misc'
 import type { UserList } from './UserList'
+import IconClose from '@assets/icon-close.svg'
 
 export default defineComponent({
   name: 'UserList',
@@ -81,7 +91,12 @@ export default defineComponent({
 
     fetchUsers()
 
-    return { dataCombined, filteredUsers, searchQuery, tableUsersHeaders }
+    return { dataCombined, filteredUsers, IconClose, searchQuery, tableUsersHeaders }
+  },
+  methods: {
+    clearSearchQuery() {
+      this.searchQuery = ''
+    }
   }
 })
 </script>
