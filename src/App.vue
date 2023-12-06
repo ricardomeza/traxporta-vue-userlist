@@ -12,10 +12,13 @@
     <Sidebar />
 
     <!-- Content -->
-    <main class="flex-1 bg-gray-100 overflow-y-auto items-center justify-center"></main>
+    <main class="flex-1 bg-gray-100 overflow-y-auto items-center justify-center">
+      <UserList />
+    </main>
   </div>
 </template>
 
 <script setup lang="ts">
 import Sidebar from '@components/Sidebar/Sidebar.vue'
+import UserList from '@components/UserList/UserList.vue'
 </script>
