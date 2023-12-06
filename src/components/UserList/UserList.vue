@@ -9,14 +9,16 @@
         <div class="relative">
           <input
             class="border p-3 text-xs rounded-3xl pl-4 w-80"
+            id="search"
             placeholder="Search"
             type="text"
             v-model="searchQuery"
           />
           <div
-            v-if="searchQuery"
             @click="clearSearchQuery"
             class="absolute right-2 top-2 cursor-pointer"
+            id="iconClearSearch"
+            v-if="searchQuery"
           >
             <img :src="IconClose" alt="Clear text" />
           </div>
@@ -24,32 +26,39 @@
       </div>
 
       <!-- Table -->
-      <table class="table-auto w-full mt-6">
-        <thead>
-          <tr class="text-left text-xs">
-            <th v-for="name in tableUsersHeaders" :key="name" class="pb-3 font-thin min-w-min">
-              {{ name }}
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="user in filteredUsers"
-            :key="user.id"
-            class="border-t h-20 text-xs font-semibold"
-          >
-            <td>
-              <img
-                :src="user.avatarUrl"
-                :alt="user.name"
-                class="h-10 w-10 rounded-lg border-gray-300 border mr-5 ml-5 m-auto min-w-fit"
-              />
-            </td>
-            <td class="pr-5">{{ user.name }}</td>
-            <td class="pr-5">{{ user.email }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <section class="w-full flex flex-col items-center">
+        <div v-if="!dataCombined.length && !filteredUsersHasData" class="loader mt-10 mb-10"></div>
+        <table
+          v-if="dataCombined.length && filteredUsersHasData"
+          class="table-auto w-full"
+          id="tableUserList"
+        >
+          <thead>
+            <tr class="text-left text-xs">
+              <th v-for="name in tableUsersHeaders" :key="name" class="pb-3 font-thin min-w-min">
+                {{ name }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="user in filteredUsers"
+              :key="user.id"
+              class="border-t h-20 text-xs font-semibold"
+            >
+              <td>
+                <img
+                  :src="user.avatarUrl"
+                  :alt="user.name"
+                  class="h-10 w-10 rounded-lg border-gray-300 border mr-5 ml-5 m-auto min-w-fit"
+                />
+              </td>
+              <td class="pr-5">{{ user.name }}</td>
+              <td class="pr-5">{{ user.email }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
     </section>
   </div>
 </template>
@@ -89,9 +98,18 @@ export default defineComponent({
       )
     )
 
+    const filteredUsersHasData = computed(() => filteredUsers.value.length)
+
     fetchUsers()
 
-    return { dataCombined, filteredUsers, IconClose, searchQuery, tableUsersHeaders }
+    return {
+      dataCombined,
+      filteredUsers,
+      filteredUsersHasData,
+      IconClose,
+      searchQuery,
+      tableUsersHeaders
+    }
   },
   methods: {
     clearSearchQuery() {
