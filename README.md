@@ -71,3 +71,11 @@ bun  run  test:e2e  --  --debug
 ```sh
 bun run lint
 ```
+
+## 📦 Deploy to Netlify
+
+This project is set up for deployment on Netlify and will automatically deploy when changes are pushed to the main branch.
+
+Check out the live version of the app with the latest updates here:
+[https://dazzling-biscochitos-140bba.netlify.app/](https://dazzling-biscochitos-140bba.netlify.app/)
+(Note: The subdomain name is automatically assigned by Netlify 🤭)
